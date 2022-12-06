@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option go_package = "server/blog/";
+
+service BlogService {
+  rpc QueryPost(PostRequest) returns (PostResponse);
+  rpc ListPosts(ListPostRequest) returns (ListPostResponse);
+}
+
+message PostRequest {
+  int32 id = 1;
+}
+
+message PostResponse {
+  int32 id = 1;
+  string title = 2;
+  string body = 3;
+}
+
+message ListPostRequest {}
+
+message ListPostResponse {
+  repeated PostResponse posts = 1;
+}
